@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lyrics Auto Type</title>
+    <style>
+        body{
+            background:black;
+            color:white;
+            font-family:Arial;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            text-align:center;
+        }
+        .lyrics-box{
+            font-size:50px;
+            width:80%;
+        }
+        .line{
+            margin:20px 0;
+        }
+        .cursor{
+            border-right:2px solid white;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="lyrics-box">
+    <div id="line1" class="line"></div>
+    <div id="line2" class="line"></div>
+    <div id="line3" class="line"></div>
+</div>
+
+<script>
+   
+    const line1 = "हम तेरे बिन अब रह नही सकते तेरे बिना क्या वजूद मेरा हम तेरे बिन अब रह नही सकते तेरे बिना क्या वजूद मेरा";
+    const line2 = "तुझसे जुदा गर हो जाएँगे तो खुद से ही हो जाएँगे जुदा...";  
+    const line3 = "क्यूंकी तुम ही हो अब तुम ही हो ज़िंदगी अब तुम ही हो चैन भी, मेरा दर्द भी मेरी आशिक़ी अब तुम ही हो";
+
+    let index1 = 0;
+    let index2 = 0;
+    let index3 = 0;
+
+    function typeLine1() {
+        if (index1 < line1.length) {
+            document.getElementById("line1").innerHTML = line1.substring(0, index1 + 1) + "<span class='cursor'></span>";
+            index1++;
+            setTimeout(typeLine1, 80);
+        } else {
+            setTimeout(typeLine2, 1000);
+        }
+    }
+
+    function typeLine2() {
+        if (index2 < line2.length) {
+            document.getElementById("line2").innerHTML = line2.substring(0, index2 + 1) + "<span class='cursor'></span>";
+            index2++;
+            setTimeout(typeLine2, 80);
+        }else
+        {
+            setTimeout(typeLine3, 1000);
+        }
+    }
+    function typeLine3() {
+        if (index3 < line3.length) {
+            document.getElementById("line3").innerHTML = line3.substring(0, index3 + 1) + "<span class='cursor'></span>";
+            index3++;
+            setTimeout(typeLine3, 80);
+        }
+    }
+
+    typeLine1();
+</script>
+
+</body>
+</html>
